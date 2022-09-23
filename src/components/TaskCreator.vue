@@ -1,23 +1,19 @@
+<script setup lang="ts">
+import SimpleButton from '../components/SimpleButton.vue';
+</script>
+
+
 <template>
   <div class="task-creator">
     <div class="form-control">
       <input type="text" placeholder="Введите название заметки" />
     </div>
     <section>
-      <button class="btn">Создать заметку</button>
-      <button class="btn">Установить дедлайн</button>
+      <SimpleButton title="Создать заметку" theme="primary" />
+      <SimpleButton title="Установить дедлайн" theme="orange" />
     </section>
   </div>
 </template>
-
-
-<script>
-
-export default {
-  name: "TaskCreator"
-}
-
-</script>
 
 
 <style scoped>
@@ -61,62 +57,6 @@ export default {
 .form-control input:focus {
   transition: border 0.22s;
   border: 2px solid #42b983;
-}
-
-.btn {
-  color: #42b983;
-  position: relative;
-  place-content: center;
-  place-items: center;
-  width: fit-content;
-  border-radius: 99px;
-  letter-spacing: 0.05em;
-  border: 1px solid #42b983;
-  text-decoration: none;
-  text-transform: uppercase;
-  margin-right: 10px;
-  padding: 0.5rem 1.5rem;
-  white-space: nowrap;
-  font-weight: 700;
-  outline: none;
-  background: #fff;
-  transition: all 0.22s;
-}
-
-.btn:hover {
-  cursor: pointer;
-  /*opacity: 0.8;*/
-  color: white;
-  background: #42b983;
-}
-
-.btn:disabled {
-  cursor: not-allowed;
-  opacity: 1!important;
-  background: #eee!important;
-  border-color: #ddd!important;
-  color: #999!important;
-}
-
-.btn:active {
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-.btn.primary {
-  background: #42b983;
-  color: #fff;
-}
-
-.btn.danger {
-  background: #e53935;
-  color: #fff;
-  border-color: #e53935;
-}
-
-.btn.warning {
-  background: #c25205;
-  color: #fff;
-  border-color: #c25205;
 }
 
 </style>

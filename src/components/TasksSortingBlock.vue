@@ -6,13 +6,6 @@
   </section>
 </template>
 
-<script>
-
-export default {
-  name: "TasksSortingBlock",
-}
-
-</script>
 
 <style scoped>
 

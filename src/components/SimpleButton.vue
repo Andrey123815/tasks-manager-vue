@@ -1,0 +1,72 @@
+<template>
+  <button :class="['btn', theme]">{{ title }}</button>
+</template>
+
+
+<script setup lang="ts">
+interface Props {
+  title: string
+  theme?: 'primary' | 'red' | 'orange'
+}
+
+const {title, theme} = withDefaults(defineProps<Props>(), {theme: 'primary'})
+</script>
+
+<style scoped>
+
+.btn {
+  position: relative;
+  place-content: center;
+  place-items: center;
+  width: fit-content;
+  border-radius: 99px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-right: 10px;
+  padding: 0.5rem 1.5rem;
+  white-space: nowrap;
+  font-weight: 700;
+  outline: none;
+  background: #fff;
+  transition: all 0.22s;
+  max-height: 40px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn:active {
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.primary {
+  color: #42b983;
+  border: 1px solid #42b983;
+}
+
+.primary:hover {
+  background: #42b983;
+}
+
+.red {
+  color: #e53935;
+  border: 1px solid #e53935;
+}
+
+.red:hover {
+  background: #e53935;
+}
+
+.orange {
+  color: #ef6507;
+  border: 1px solid #ef6507;
+}
+
+.orange:hover {
+  background: #ef6507;
+}
+
+</style>
