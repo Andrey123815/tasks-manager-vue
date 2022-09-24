@@ -31,14 +31,18 @@ function applyFilters(task: ITask, filters: IFilter): boolean {
   return !(!task.deadline && filters.onlyDeadlines);
 }
 
-function sortByAllFilters(tasks: ITask[], filters: IFilter) {
-  if (filters.sortByDate) {
-    tasks.sort((task1, task2) => Date.parse(task1.creationDate) > Date.parse(task2.creationDate) ? 1 : -1);
+function singleSort(tasks: ITask[],
+                    sortBy: 'sortByDate' | 'sortByName',
+                    taskField: 'name' | 'deadline' | 'description' | 'creationDate',
+                    sortDirection: 1 | -1) {
+  if (filters[sortBy]) {
+    tasks.sort((task1, task2) => Date.parse(task1[taskField]) > Date.parse(task2[taskField]) ? sortDirection : sortDirection * (-1));
   }
+}
 
-  if (filters.sortByName) {
-    tasks.sort((task1, task2) => task1.name > task2.name ? 1 : -1);
-  }
+function sortByAllFilters(tasks: ITask[], filters: IFilter) {
+  singleSort(tasks, 'sortByDate', 'creationDate', filters.sortDirection ? -1 : 1);
+  singleSort(tasks, 'sortByName', 'name', filters.sortDirection ? -1 : 1);
 
   return tasks;
 }

@@ -3,7 +3,8 @@
     <mark v-for="(sortType, index) in sortTypes" class="sort-type"
           :class="{'active-state': state[index]}"
           @click="handleFiltersChange(state, index)">
-      {{ sortType }}
+      <span v-if="index <= 3">{{ sortType }}</span>
+      <SortDirectionIcon v-else :color="state[index] ? 'white' : '#42B983'"/>
     </mark>
 <!--    <mark class="sort-type" style="padding-left: 8px; padding-right: 8px;"-->
 <!--          :class="{'active-state': state[index]}"-->
@@ -15,6 +16,7 @@
 
 <script setup lang="ts">
 import {reactive} from "vue";
+import SortDirectionIcon from './icons/SortDirectionIcon.vue';
 
 const emit = defineEmits<{
   (e: 'handle-filters-change', state: boolean[]): void
@@ -35,8 +37,8 @@ function handleFiltersChange(state: boolean[], index: number) {
   emit('handle-filters-change', state);
 }
 
-const sortTypes = ['Только дедлайны', 'Без дедлайнов', 'По дате', 'По названию'];
-let state = reactive([false, false, false, false]);
+const sortTypes = ['Только дедлайны', 'Без дедлайнов', 'По дате', 'По названию', 'Реверс сортировки'];
+let state = reactive([false, false, false, false, false]);
 </script>
 
 <style scoped>

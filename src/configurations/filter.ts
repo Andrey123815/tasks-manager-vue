@@ -3,4 +3,5 @@ export interface IFilter {
     withoutDeadlines: boolean,
     sortByDate: boolean,
     sortByName: boolean,
+    sortDirection: boolean
 }

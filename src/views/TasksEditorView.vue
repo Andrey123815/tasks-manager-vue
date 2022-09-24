@@ -24,16 +24,20 @@ import TasksList from "@/components/TasksList.vue";
 import {reactive} from "vue";
 import type {IFilter} from "@/configurations/filter";
 
+const ASC_DIRECTION = false;
+
 const ONLY_DEADLINES = 0;
 const WITHOUT_DEADLINES = 1;
 const SORT_BY_DATE = 2;
 const SORT_BY_NAME = 3;
+const SORT_DIRECTION = 4;
 
 const filters = reactive({
   onlyDeadlines: false,
   withoutDeadlines: false,
   sortByDate: false,
   sortByName: false,
+  sortDirection: ASC_DIRECTION
 } as IFilter);
 
 function applyNewFilters(state: boolean[]) {
@@ -41,6 +45,7 @@ function applyNewFilters(state: boolean[]) {
   filters.withoutDeadlines = state[WITHOUT_DEADLINES];
   filters.sortByDate = state[SORT_BY_DATE];
   filters.sortByName = state[SORT_BY_NAME];
+  filters.sortDirection = state[SORT_DIRECTION];
 }
 
 </script>
