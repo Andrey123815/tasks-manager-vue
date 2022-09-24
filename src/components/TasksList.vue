@@ -48,7 +48,6 @@ function sortByAllFilters(tasks: ITask[], filters: IFilter) {
 }
 
 const {filters} = defineProps<Props>();
-
 const tasksTestCaseList: ITask[] = [
   {
     name: 'Заметка 1',
@@ -75,11 +74,9 @@ const tasksTestCaseList: ITask[] = [
     creationDate: "Fri Sep 23 2022 12:21:44 GMT+0300 (Москва, стандартное время)",
   },
 ];
-
 const tasksList = sortByAllFilters(tasksTestCaseList, filters);
 
 </script>
-
 
 <style scoped>
 .tasks-list {

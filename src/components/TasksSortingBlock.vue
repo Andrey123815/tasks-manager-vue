@@ -6,11 +6,6 @@
       <span v-if="index <= 3">{{ sortType }}</span>
       <SortDirectionIcon v-else :color="state[index] ? 'white' : '#42B983'"/>
     </mark>
-<!--    <mark class="sort-type" style="padding-left: 8px; padding-right: 8px;"-->
-<!--          :class="{'active-state': state[index]}"-->
-<!--          @click="handleFiltersChange(state, index)">-->
-<!--      <SortDirectionIcon />-->
-<!--    </mark>-->
   </section>
 </template>
 
