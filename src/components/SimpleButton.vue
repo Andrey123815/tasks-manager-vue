@@ -1,15 +1,16 @@
 <template>
-  <button :class="['btn', theme]">{{ title }}</button>
+  <button :class="['btn', theme]" :style="{width}">{{ title }}</button>
 </template>
 
 
 <script setup lang="ts">
 interface Props {
   title: string
-  theme?: 'primary' | 'red' | 'orange'
+  theme?: 'primary' | 'red' | 'orange',
+  width?: string
 }
 
-const {title, theme} = withDefaults(defineProps<Props>(), {theme: 'primary'})
+const {title, theme, width} = withDefaults(defineProps<Props>(), {theme: 'primary'})
 </script>
 
 <style scoped>

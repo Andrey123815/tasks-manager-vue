@@ -1,7 +1,7 @@
 <template>
-<div>
+<span>
   {{currentTime}}
-</div>
+</span>
 </template>
 
 <script setup lang="ts">

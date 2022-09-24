@@ -1,13 +1,50 @@
 <template>
   <section>
-    <mark class="sort-type">Только дедлайны</mark>
-    <mark class="sort-type">По дате</mark>
-    <mark class="sort-type">По названию</mark>
+    <mark v-for="(sortType, index) in sortTypes" class="sort-type"
+          :class="{'active-state': state[index]}"
+          @click="handleFiltersChange(state, index)">
+      {{ sortType }}
+    </mark>
+<!--    <mark class="sort-type" style="padding-left: 8px; padding-right: 8px;"-->
+<!--          :class="{'active-state': state[index]}"-->
+<!--          @click="handleFiltersChange(state, index)">-->
+<!--      <SortDirectionIcon />-->
+<!--    </mark>-->
   </section>
 </template>
 
+<script setup lang="ts">
+import {reactive} from "vue";
+
+const emit = defineEmits<{
+  (e: 'handle-filters-change', state: boolean[]): void
+}>();
+
+function handleFiltersChange(state: boolean[], index: number) {
+  if (index <= 1) {
+    if (state[index]) {
+      state[index] = false;
+      emit('handle-filters-change', state);
+      return;
+    }
+    state[index] = true;
+    state[1-index] = false;
+  } else {
+    state[index] = !state[index];
+  }
+  emit('handle-filters-change', state);
+}
+
+const sortTypes = ['Только дедлайны', 'Без дедлайнов', 'По дате', 'По названию'];
+let state = reactive([false, false, false, false]);
+</script>
 
 <style scoped>
+
+svg {
+  position: relative;
+  top: 8px;
+}
 
 .sort-type {
   color: #42b983;
@@ -28,6 +65,12 @@
   background: #fff;
   transition: all 0.22s;
   font-size: 12px;
+  cursor: pointer;
+}
+
+.active-state {
+  color: white;
+  background: #42b983;
 }
 
 </style>
