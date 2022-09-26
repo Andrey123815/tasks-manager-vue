@@ -1,12 +1,12 @@
 <template>
 <span>
-  {{currentTime}}
+  {{ currentTime }}
 </span>
 </template>
 
 <script setup lang="ts">
 import {onBeforeUnmount, ref} from "vue";
-import {getTimeRemaining, getDiffTime} from "@/libs/Timer";
+import {getDiffTime, getTimeRemaining} from "@/libs/Timer";
 
 interface Props {
   deadline: string

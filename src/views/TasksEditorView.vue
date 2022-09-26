@@ -1,5 +1,11 @@
 <template>
-  <main class="container pt-5">
+  <main v-if="!auth">
+    <input v-model="username" type="text" placeholder="Введите email"/>
+    <input v-model="password" type="text" placeholder="Введите пароль"/>
+    <SimpleButton title="Зарегистрироваться" @click="handleRegister"/>
+    <SimpleButton title="Войти" @click="handleLogin"/>
+  </main>
+  <main v-else class="container pt-5">
     <div class="card">
       <header>
         <h2>Создайте заметку</h2>
@@ -21,8 +27,10 @@
 import TaskCreator from "@/components/TaskCreator.vue";
 import TasksSortingBlock from "@/components/TasksSortingBlock.vue";
 import TasksList from "@/components/TasksList.vue";
-import {reactive} from "vue";
+import {reactive, ref} from "vue";
 import type {IFilter} from "@/configurations/filter";
+import SimpleButton from "@/components/SimpleButton.vue";
+import API from '@/configurations/network';
 
 const ASC_DIRECTION = false;
 
@@ -32,6 +40,22 @@ const SORT_BY_DATE = 2;
 const SORT_BY_NAME = 3;
 const SORT_DIRECTION = 4;
 
+function applyNewFilters(state: boolean[]) {
+  filters.onlyDeadlines = state[ONLY_DEADLINES];
+  filters.withoutDeadlines = state[WITHOUT_DEADLINES];
+  filters.sortByDate = state[SORT_BY_DATE];
+  filters.sortByName = state[SORT_BY_NAME];
+  filters.sortDirection = state[SORT_DIRECTION];
+}
+
+const handleLogin = async () => {
+  auth.value = await API.login(username.value, password.value);
+}
+
+const handleRegister = async () => {
+  auth.value = await API.register(username.value, password.value);
+}
+
 const filters = reactive({
   onlyDeadlines: false,
   withoutDeadlines: false,
@@ -40,13 +64,9 @@ const filters = reactive({
   sortDirection: ASC_DIRECTION
 } as IFilter);
 
-function applyNewFilters(state: boolean[]) {
-  filters.onlyDeadlines = state[ONLY_DEADLINES];
-  filters.withoutDeadlines = state[WITHOUT_DEADLINES];
-  filters.sortByDate = state[SORT_BY_DATE];
-  filters.sortByName = state[SORT_BY_NAME];
-  filters.sortDirection = state[SORT_DIRECTION];
-}
+const auth = ref(false);
+const username = ref('');
+const password = ref('');
 
 </script>
 

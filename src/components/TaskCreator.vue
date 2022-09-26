@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import SimpleButton from '../components/SimpleButton.vue';
-</script>
+import SimpleButton from '../components/SimpleButton.vue';</script>
 
 
 <template>
   <div class="task-creator">
     <div class="form-control">
-      <input type="text" placeholder="Введите название заметки" />
+      <input type="text" placeholder="Введите название заметки"/>
     </div>
     <section>
-      <SimpleButton title="Создать заметку" theme="primary" />
-      <SimpleButton title="Установить дедлайн" theme="orange" />
+      <SimpleButton title="Создать заметку" theme="primary"/>
+      <SimpleButton title="Установить дедлайн" theme="orange"/>
     </section>
   </div>
 </template>

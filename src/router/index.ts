@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import TasksEditorView from "../views/TasksEditorView.vue";
 
 const router = createRouter({

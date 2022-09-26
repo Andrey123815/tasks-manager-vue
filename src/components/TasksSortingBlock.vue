@@ -25,14 +25,14 @@ function handleFiltersChange(state: boolean[], index: number) {
       return;
     }
     state[index] = true;
-    state[1-index] = false;
+    state[1 - index] = false;
   } else {
     state[index] = !state[index];
   }
   emit('handle-filters-change', state);
 }
 
-const sortTypes = ['Только дедлайны', 'Без дедлайнов', 'По дате', 'По названию', 'Реверс сортировки'];
+const sortTypes = ['Только дедлайны', 'Только заметки', 'По дате', 'По названию', 'Реверс сортировки'];
 let state = reactive([false, false, false, false, false]);
 </script>
 

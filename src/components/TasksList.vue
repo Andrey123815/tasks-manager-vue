@@ -1,6 +1,7 @@
 <template>
   <ol class="tasks-list">
-    <li v-show="applyFilters(task, filters)" v-for="task in sortByAllFilters(tasksList, filters)" class="tasks-list__line">
+    <li v-show="applyFilters(task, filters)" v-for="task in sortByAllFilters(tasksList, filters)"
+        class="tasks-list__line">
       <div class="ma">{{ task.name }}</div>
       <div v-if="task.deadline" class="ma">До события:
         <Timer deadline="Sat Sep 24 2022 12:21:44 GMT+0300 (Москва, стандартное время)"/>
