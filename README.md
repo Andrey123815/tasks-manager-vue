@@ -1,52 +1,17 @@
-# tasks-manager-vue
+# Project description
 
-This template should help get you started developing with Vue 3 in Vite.
+The project includes registration and authorization functionality. Upon successful authorization, the user gets to the main screen
 
-## Recommended IDE Setup
+![image](https://user-images.githubusercontent.com/72212727/202702944-5ca05351-5682-401b-af84-801ea1fd8380.png)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Creating a note is as follows:
 
-## Type Support for `.vue` Imports in TS
+1) The user enters the name of the note and presses one of the buttons - create a note or set a deadline. 
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+In the first case, the note will be normal, without setting the execution time and special display of the deadline status.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+In the second case, the note becomes an event, indicating the countdown time. 
+Upon successful completion, the animation of successful completion starts, an hour before the deadline, the note is highlighted in red.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+2) The user can also specify the text of the note in detail
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
